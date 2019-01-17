@@ -15,6 +15,7 @@ public class Problem10 {
 		Problem10 solution06 = new Problem10();
 		System.out.println(solution06.RectCover(5));
 		//ljf测试test分支
+		//ljf测试分支2
 	}
 
 	/**
