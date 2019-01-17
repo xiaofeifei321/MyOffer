@@ -6,6 +6,7 @@ package com.ccut.offer;
  */
 public class Problem46 {
 	public static void main(String[] args) {
+		//测试分支
 		Problem46 solution46 = new Problem46();
 		// System.out.println(solution46.Sum_Solution(3));
 		System.out.println(solution46.Sum_Solution_2(4));
