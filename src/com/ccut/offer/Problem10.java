@@ -13,6 +13,7 @@ package com.ccut.offer;
 public class Problem10 {
 	public static void main(String[] args) {
 		Problem10 solution06 = new Problem10();
+		//ce
 		System.out.println(solution06.RectCover(5));
 	}
 
