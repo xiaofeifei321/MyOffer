@@ -1,5 +1,7 @@
 package com.ccut.offer;
 
+import com.ccut.offer.util.TreeNode;
+
 import java.util.Stack;
 
 /**
@@ -63,7 +65,7 @@ public class Problem62 {
 		TreeNode n7 = new TreeNode(8);
 		// TreeNode n8 = new TreeNode(8);
 		// TreeNode n9 = new TreeNode(9);
-
+       //测试
 		n1.left = n2;
 		n1.right = n3;
 
@@ -77,19 +79,5 @@ public class Problem62 {
 		// n4.right = n9;
 		System.out.println("第" + 3 + "大的节点是：");
 		System.out.println(problem62.KthNode(n1, 3));
-	}
-}
-
-class TreeNode {
-	int val;
-	public TreeNode left = null;
-	public TreeNode right = null;
-
-	public TreeNode(int val) {
-		this.val = val;
-	}
-
-	public String toString() {
-		return val + "";
 	}
 }
