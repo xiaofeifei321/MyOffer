@@ -1,6 +1,8 @@
 package com.ccut.offer;
 /**
- *反转链表
+ *反转链表：输入一个链表的头结点，反转该链表并输出反转后链表的头结点。
+ * 思路：
+ *  三个指针一个指向当前节点，一个指向前一个节点，一个指向后面的节点
  */
 public class Problem15 {
 	public ListNode ReverseList(ListNode head){
