@@ -1,6 +1,8 @@
 package com.ccut.offer;
 
 /**
+ *
+ * 测试
  * 假设是4
  * 假设第一个小矩形竖着放，那么剩下的就是f(3), 
  * 如果第一个小矩形横着放，那么他底下的也必须横着放，方法数则为余下的f(2)
@@ -16,9 +18,10 @@ public class Problem10 {
 		System.out.println(solution06.RectCover(5));
 	}
 
+
 	/**
 	 * 用递归的方法 n
-	 * 
+	 * 测试Test
 	 * @return 摆法
 	 */
 	public int RectCover(int target) {
