@@ -4,10 +4,11 @@ package com.ccut.offer;
  * 数值的整次方
  * 
  * @author root 实现函数double Power(double base,int exponent),
- *         求base的exponent次方。不得使用库函数，同时不需要考虑大数问题
- *         
+ * 求base的exponent次方。不得使用库函数，同时不需要考虑大数问题
+ *
  * 考察点：
  *   边界的条件
+ *   for循环遍历
  */
 public class Problem12 {
 
@@ -34,6 +35,7 @@ public class Problem12 {
 		}
 		return result;
 	}
+
 	//判断两个double型数据，计算机有误差
 	private boolean equal(double num1,double num2){
 		if((num1-num2>-0.0000001) && (num1-num2<0.0000001)){
