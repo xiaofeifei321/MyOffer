@@ -1,5 +1,7 @@
 package com.ccut.offer;
 
+import com.ccut.offer.util.TreeNode;
+
 /**
  * 问题：反序列化有问题
  * 
