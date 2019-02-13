@@ -23,7 +23,8 @@ public class Problem4 {
      * 
      * @param pre  前序遍历
      * @param in    中序遍历
-     * @return        二叉树根节点
+     * @return  二叉树根节点
+     * 思路：
      */
      public TreeNode reConstructBinaryTree(int[] pre,int[] in) {
          /*
@@ -31,11 +32,15 @@ public class Problem4 {
           */
          if(pre == null || in == null || pre.length != in.length) 
              return null;
-         
+
          return construct(pre, 0, pre.length-1, in, 0, in.length-1);
      }
      /**
-      * 
+      * 思路：
+      *   前序遍历：中序遍历
+      *   根据前序遍历我们可以得到根节点
+      *   中序遍历得到根节点，根节点左边是左子树，根节点的右边是右子树
+      *    从前序遍历和中序遍历递归构建左右子树（传入的参数 前序遍历的开始位置和中序遍历的结束位置）
       * @param pre    前序遍历
       * @param ps    前序遍历的开始位置
       * @param pe    前序遍历的结束位置
@@ -46,7 +51,6 @@ public class Problem4 {
       */
      private TreeNode construct(int[] pre, int ps, int pe, int[] in, int is, int ie) {
          if(ps > pe) return null;
-         
          // 取前序遍历的第一个数字就是根节点
          int value = pre[ps];
          // 在中序遍历中中寻找根节点
@@ -57,7 +61,6 @@ public class Problem4 {
          // 如果在整个中序遍历的数组中没有找到，说明输入的参数是不合法的，抛出异常 
          if(index > ie) 
              throw new RuntimeException("Invalid Iuput!");
-         
          // 创建当前根节点，并为根节点赋值
          TreeNode node = new TreeNode(value);
          // 递归调用构建当前节点的左子树 

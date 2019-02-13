@@ -1,5 +1,7 @@
 package com.ccut.offer;
 
+import com.ccut.offer.util.TreeNode;
+
 /**
  * 二叉搜索树和双向链表
  * 由于要求链表是有序的，可以借助二叉树中序遍历，因为中序遍历算法的特点就是从小到大访问结点。中序遍历过程中，根节点不断加到右边，这样可以保持从左到右升序。
@@ -55,18 +57,3 @@ public class Problem26 {
 	}
 }
 
-class TreeNode {
-	int val = 0;
-	TreeNode left = null;
-	TreeNode right = null;
-
-	public TreeNode(int val) {
-		this.val = val;
-	}
-
-	@Override
-	public String toString() {
-		return "TreeNode [val=" + val + ", left=" + left + ", right=" + right
-				+ "]";
-	}
-}

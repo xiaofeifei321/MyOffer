@@ -1,7 +1,11 @@
 package com.ccut.offer;
 /**
- * 两个栈实现队列
+ * 栈实现队列
+ * 思路：两个栈
+ *
  */
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class Problem5 {
@@ -32,3 +36,4 @@ public class Problem5 {
 		return stack2.pop();// stcak2负责出队
 	}
 }
+
