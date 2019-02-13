@@ -31,6 +31,7 @@ public class Problem13 {
 	//判断奇偶
 	public boolean isEven(int n){
 		return (n & 1) == 0;
+		//测试2
 	}
 	public static void main(String[] args){
 		Problem13 test = new Problem13();
