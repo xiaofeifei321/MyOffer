@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.PriorityQueue;
 
 /**
- *数据流中的中位数 
+ * 数据流中的中位数
  */
 public class Problem63 {
-	ArrayList<Integer> list = new ArrayList<>();
+    ArrayList<Integer> list = new ArrayList<>();
     // 大顶堆 PriorityQueue优先队列
     PriorityQueue<Integer> maxHeap = new PriorityQueue<>();
     // 小顶堆，并且大顶堆元素都大于小顶堆
@@ -17,8 +17,8 @@ public class Problem63 {
     int N = 0;
 
     public static void main(String[] args) {
-    	Problem63 problem63 = new Problem63();
-    	problem63.Insert_2(3);
+        Problem63 problem63 = new Problem63();
+        problem63.Insert_2(3);
         System.out.println(problem63.GetMedian_2());
         problem63.Insert_2(4);
         System.out.println(problem63.GetMedian_2());
@@ -26,6 +26,7 @@ public class Problem63 {
 
     /**
      * 维护两个堆，一个大顶堆、一个小顶堆
+     *
      * @param val
      */
     public void Insert_2(Integer num) {
@@ -36,7 +37,7 @@ public class Problem63 {
             // 因此需要先将元素插入小顶堆，然后利用小顶堆为大顶堆的特点，取出堆顶元素即为最大元素，此时插入大顶堆
             maxHeap.offer(num);
             minHeap.offer(maxHeap.poll());
-        }else {
+        } else {
             minHeap.offer(num);
             maxHeap.offer(minHeap.poll());
         }

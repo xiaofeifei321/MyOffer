@@ -6,15 +6,16 @@ import java.util.Queue;
 
 /**
  * 把二叉树打印多行
+ *
  * @author root
  */
 public class Problem60 {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         Problem60 problem60 = new Problem60();
         TreeNode treeNode = problem60.createBinaryTreeByArray(array, 0);
-        for (ArrayList list :problem60.Print(treeNode)) {
+        for (ArrayList list : problem60.Print(treeNode)) {
             System.out.println(list);
         }
     }
@@ -63,7 +64,6 @@ public class Problem60 {
         }
         return arrayLists;
     }
-
 
 
     private TreeNode createBinaryTreeByArray(int[] array, int index) {

@@ -1,14 +1,16 @@
 package com.ccut.offer;
+
 /**
  * 斐波那契额数列
- * @author root
  *
+ * @author root
  */
 public class Problem7 {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println(Fibonacci_2(4));
     }
+
     /**
      * 用递归直接求解
      */
@@ -25,6 +27,7 @@ public class Problem7 {
 
     /**
      * 迭代方法，用两个变量记录fn-1和fn-2:
+     *
      * @param n 斐波那契数列第n项
      * @return 斐波那契数列第n项的值
      */

@@ -3,11 +3,12 @@ package com.ccut.observer.proxy;
 /**
  * 代理对象,静态代理
  */
-public class UserDaoProxy implements IUserDao{
+public class UserDaoProxy implements IUserDao {
     //接收保存目标对象
     private IUserDao target;
-    public UserDaoProxy(IUserDao target){
-        this.target=target;
+
+    public UserDaoProxy(IUserDao target) {
+        this.target = target;
     }
 
     public void save() {
