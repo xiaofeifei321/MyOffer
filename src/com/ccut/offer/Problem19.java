@@ -22,64 +22,64 @@ package com.ccut.offer;
  array[i][j] = scanner.nextInt();
  }
  }
-
  ***************************************************************/
+
 import java.util.ArrayList;
 
 public class Problem19 {
-	ArrayList<Integer> result = new ArrayList<>();
+    ArrayList<Integer> result = new ArrayList<>();
 
-	public ArrayList<Integer> PrintMatrixByClockwise(int[][] matrix) {
-		if (matrix == null || matrix.length == 0) {
-			return result;
-		}
-		// 矩阵的行数
-		int rows = matrix.length;
-		// 矩阵的列数
-		int columns = matrix[0].length;
+    public ArrayList<Integer> PrintMatrixByClockwise(int[][] matrix) {
+        if (matrix == null || matrix.length == 0) {
+            return result;
+        }
+        // 矩阵的行数
+        int rows = matrix.length;
+        // 矩阵的列数
+        int columns = matrix[0].length;
 
-		for (int start = 0; rows > 2 * start && columns > 2 * start; start++) {
-			PrintMatrix(matrix, rows, columns, start);
-		}
-		return result;
-	}
+        for (int start = 0; rows > 2 * start && columns > 2 * start; start++) {
+            PrintMatrix(matrix, rows, columns, start);
+        }
+        return result;
+    }
 
-	/**
-	 * 打印一圈
-	 */
-	public void PrintMatrix(int[][] matrix, int rows, int columns, int start) {
-		int endRows = columns - 1 - start;
-		int endColumns = rows - 1 - start;
-		// 从左到右打印一行
-		for (int i = start; i <= endRows; i++) {
-			result.add(matrix[start][i]);
-		}
-		// 从上到下打印一列 终止号大于起止号 
-		if (endColumns > start) {
-			for (int i = start + 1; i <= endColumns; i++) {
-				result.add(matrix[i][endRows]);
-			}
-		}
-		
-		// 从右向左打印一行 ，至少有两行两列
-		if (endRows > start && endColumns > start) {
-			for (int i = endRows - 1; i >= start; i--) {
-				result.add(matrix[endColumns][i]);
-			}
-		}
-		// 从下向上打印一列  至少有三行两列
-		if (endRows > start&&endColumns-1 > start) {
-			for (int i = endColumns - 1; i > start; i--) {
-				result.add(matrix[i][start]);
-			}
-		}
-	}
+    /**
+     * 打印一圈
+     */
+    public void PrintMatrix(int[][] matrix, int rows, int columns, int start) {
+        int endRows = columns - 1 - start;
+        int endColumns = rows - 1 - start;
+        // 从左到右打印一行
+        for (int i = start; i <= endRows; i++) {
+            result.add(matrix[start][i]);
+        }
+        // 从上到下打印一列 终止号大于起止号
+        if (endColumns > start) {
+            for (int i = start + 1; i <= endColumns; i++) {
+                result.add(matrix[i][endRows]);
+            }
+        }
 
-	public static void main(String[] args) {
-		int[][] matrix = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }};
+        // 从右向左打印一行 ，至少有两行两列
+        if (endRows > start && endColumns > start) {
+            for (int i = endRows - 1; i >= start; i--) {
+                result.add(matrix[endColumns][i]);
+            }
+        }
+        // 从下向上打印一列  至少有三行两列
+        if (endRows > start && endColumns - 1 > start) {
+            for (int i = endColumns - 1; i > start; i--) {
+                result.add(matrix[i][start]);
+            }
+        }
+    }
 
-		Problem19 test = new Problem19();
-		ArrayList result = test.PrintMatrixByClockwise(matrix);
-		System.out.print(result);
-	}
+    public static void main(String[] args) {
+        int[][] matrix = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}};
+
+        Problem19 test = new Problem19();
+        ArrayList result = test.PrintMatrixByClockwise(matrix);
+        System.out.print(result);
+    }
 }

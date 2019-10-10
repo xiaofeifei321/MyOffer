@@ -6,6 +6,7 @@ import java.util.Deque;
 
 /**
  * 重头到尾打印链表
+ * 利用栈的特性，先进后出特性
  */
 public class Problem3 {
 

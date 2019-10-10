@@ -10,7 +10,7 @@ public class Problem5 {
 		solution18.push(1);
 		solution18.push(2);
 		System.out.println(solution18.pop());
-		solution18.pop();
+		System.out.println(solution18.pop());
 	}
 
 	Stack<Integer> stack1 = new Stack<Integer>();
@@ -31,4 +31,13 @@ public class Problem5 {
 		}
 		return stack2.pop();// stcak2负责出队
 	}
+
+	/**
+	 * 使用队列实现栈
+	 */
+
+
+
+
+
 }
