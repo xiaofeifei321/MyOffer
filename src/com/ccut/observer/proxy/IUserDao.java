@@ -1,4 +1,5 @@
 package com.ccut.observer.proxy;
+
 /**
  * 接口
  */

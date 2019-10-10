@@ -8,7 +8,7 @@ import java.util.Queue;
  * 从上到下打印二叉树 二叉树的层序遍历
  */
 public class Problem22 {
-	/**
+    /**
      * 二叉树层次遍历
      */
     public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
@@ -20,7 +20,7 @@ public class Problem22 {
         //往队列插入元素
         queue.offer(root);
         while (!queue.isEmpty()) {
-        	//从队列中取出一个元素
+            //从队列中取出一个元素
             TreeNode temp = queue.poll();
             if (temp.left != null) {
                 queue.offer(temp.left);

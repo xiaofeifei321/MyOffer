@@ -6,17 +6,17 @@ import java.util.Queue;
 
 /**
  * 按之字形顺序打印二叉树
- * @author root
  *
+ * @author root
  */
 public class Problem59 {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         Problem59 problem59 = new Problem59();
         TreeNode treeNode = problem59.createBinaryTreeByArray(array, 0);
         for (ArrayList list :
-        	problem59.Print(treeNode)) {
+                problem59.Print(treeNode)) {
             System.out.println(list);
         }
     }
@@ -24,6 +24,7 @@ public class Problem59 {
     /**
      * 之字形打印二叉树
      * 用reserve反转，时间复杂度高
+     *
      * @param pRoot
      * @return
      */
@@ -69,6 +70,7 @@ public class Problem59 {
 
     /**
      * 反转
+     *
      * @param arrayList
      * @return
      */

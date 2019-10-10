@@ -7,7 +7,7 @@ import java.util.HashSet;
  * 快指针的速度是慢指针的二倍：
  */
 public class Problem55 {
-	  /**
+    /**
      * 假设x为环前面的路程，a为环入口到相遇点的路程， c为环的长度
      * 当快慢指针相遇的时候： 此时慢指针走的路程为Sslow = x + m * c + a
      * 快指针走的路程为Sfast = x + n * c + a
@@ -72,10 +72,10 @@ public class Problem55 {
             this.val = val;
         }
     }
-    
+
     public static void main(String[] args) {
-		Problem55 problem55=new Problem55();
-	}
-    
-    
+        Problem55 problem55 = new Problem55();
+    }
+
+
 }

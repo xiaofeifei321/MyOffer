@@ -4,19 +4,22 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
+
 /**
- *  滑动窗口的最大值
+ * 滑动窗口的最大值
+ *
  * @author root
  */
 public class Problem64 {
 
     public static void main(String[] args) {
-    	Problem64 solution52 = new Problem64();
+        Problem64 solution52 = new Problem64();
         int[] num = {2, 3, 4, 2, 6, 2, 5, 1};
         int size = 3;
         ArrayList<Integer> list = solution52.maxInWindows(num, size);
         System.out.println(list);
     }
+
     /**
      * 最大堆方法
      * 构建一个窗口size大小的最大堆，每次从堆中取出窗口的最大值，随着窗口往右滑动，需要将堆中不属于窗口的堆顶元素删除。

@@ -23,8 +23,8 @@ import java.util.Deque;
  * 当交换完所有的非叶子结点的左右子结点之后，就得到了树的镜像
  */
 public class Problem18 {
-	public static void main(String[] args) {
-		Problem18 solution15 = new Problem18();
+    public static void main(String[] args) {
+        Problem18 solution15 = new Problem18();
         int[] array = {8, 6, 10, 5, 7, 9, 11};
         TreeNode treeNode = solution15.createBinaryTreeByArray(array, 0);
         System.out.println(treeNode.left.right.val);
@@ -34,6 +34,7 @@ public class Problem18 {
 
     /**
      * 用栈遍历二叉树
+     *
      * @param root
      */
     public void Mirror_2(TreeNode root) {
@@ -60,6 +61,7 @@ public class Problem18 {
 
     /**
      * 递归
+     *
      * @param root
      */
     public void Mirror(TreeNode root) {
@@ -90,10 +92,10 @@ public class Problem18 {
 
         }
 
-		@Override
-		public String toString() {
-			return "TreeNode [val=" + val + "]";
-		}
+        @Override
+        public String toString() {
+            return "TreeNode [val=" + val + "]";
+        }
     }
 
     public TreeNode createBinaryTreeByArray(int[] array, int index) {

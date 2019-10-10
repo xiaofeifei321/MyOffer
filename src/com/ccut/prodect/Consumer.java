@@ -1,23 +1,24 @@
 package com.ccut.prodect;
+
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
- 
+
 /**
  * 消费者线程
- * 
+ *
  * @author jackyuj
  */
 public class Consumer implements Runnable {
-    
+
     private BlockingQueue<String> queue;
     private static final int DEFAULT_RANGE_FOR_SLEEP = 1000;
- 
+
     //构造函数
     public Consumer(BlockingQueue<String> queue) {
         this.queue = queue;
     }
- 
+
     public void run() {
         System.out.println("启动消费者线程！");
         Random r = new Random();
@@ -42,6 +43,6 @@ public class Consumer implements Runnable {
             System.out.println("退出消费者线程！");
         }
     }
- 
-    
+
+
 }

@@ -5,43 +5,43 @@ package com.ccut.offer;
  */
 public class Problem58 {
 
-	/**
-	 * 用递归
-	 */
-	boolean isSymmetrical(TreeNode pRoot) {
-		if (pRoot == null)
-			return true;
-		return isSymmetrical(pRoot.left, pRoot.right);
-	}
+    /**
+     * 用递归
+     */
+    boolean isSymmetrical(TreeNode pRoot) {
+        if (pRoot == null)
+            return true;
+        return isSymmetrical(pRoot.left, pRoot.right);
+    }
 
-	boolean isSymmetrical(TreeNode node1, TreeNode node2) {
-		if (node1 == null && node2 == null) {
-			return true;
-		}
-		if (node1 == null || node2 == null) {
-			return false;
-		}
-		if (node1.val == node2.val) {
-			return isSymmetrical(node1.left, node2.right)
-					&& isSymmetrical(node1.right, node2.left);
-		} else
-			return false;
-	}
+    boolean isSymmetrical(TreeNode node1, TreeNode node2) {
+        if (node1 == null && node2 == null) {
+            return true;
+        }
+        if (node1 == null || node2 == null) {
+            return false;
+        }
+        if (node1.val == node2.val) {
+            return isSymmetrical(node1.left, node2.right)
+                    && isSymmetrical(node1.right, node2.left);
+        } else
+            return false;
+    }
 
-	public class TreeNode {
-		int val = 0;
-		TreeNode left = null;
-		TreeNode right = null;
+    public class TreeNode {
+        int val = 0;
+        TreeNode left = null;
+        TreeNode right = null;
 
-		public TreeNode(int val) {
-			this.val = val;
-		}
+        public TreeNode(int val) {
+            this.val = val;
+        }
 
-	}
-	public static void main(String[] args) {
-		
-	}
-	
-	
-	
+    }
+
+    public static void main(String[] args) {
+
+    }
+
+
 }
