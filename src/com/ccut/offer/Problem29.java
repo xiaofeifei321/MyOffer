@@ -5,7 +5,7 @@ package com.ccut.offer;
  */
 public class Problem29 {
     public static void main(String[] args) {
-        int[] array = {1, 2, 3, 2, 2, 2, 5, 4, 2};
+        int[] array = {1, 2, 3, 2, 2, 2, 5, 4, 1};
         Problem29 p = new Problem29();
         System.out.println(p.moreThanHalfNum(array));
     }
