@@ -2,6 +2,8 @@ package com.ccut.offer;
 
 /**
  * 数组中出现次数超过一半的数字
+ * 1:解法使用中位数的思想
+ * 2：解法2：查过一半的数字肯定是最后一次吧次数设置为1对应的数字
  */
 public class Problem29 {
     public static void main(String[] args) {
