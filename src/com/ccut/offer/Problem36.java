@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 /**
  * 数组中的逆序对个数
+ * 1:数组｛7，5，6，4｝中，一共存在5对逆序对，分别是｛7，6｝，｛7，5｝，｛7，4｝，｛6，4｝，｛5，4}
+ * 先把数组分隔成子数组，先统计出子数组内部的逆序对的数目，然后再统计出两个相邻子数组之间的逆序对的数目。
+ * 在统计逆序对的过程中，还需要对数组进行排序。如果对排序算法很熟悉，我们不难发现这个排序的过程就是归并排序。
  */
 public class Problem36 {
     private ArrayList<Integer> assignList(ArrayList<Integer> list, int start, int end) {
