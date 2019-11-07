@@ -3,12 +3,19 @@ package com.ccut.offer;
 import com.ccut.util.ListNode;
 
 /**
+ * 题目：
+ * 0，1，，，，，n-1这n 个数字排成一个圆圈，从数字0开始每次从这个圆圈中删除第m个数字。求出这个圆圈里剩下的最后一个数字,0，1，2，3，4这5个数字组成的一个圆圈，从数字0开始每次删除第3个数字，则删除的前四个数字依次是2，0，4，1因此最后剩下的数字是3.
  * 圆圈中最后剩下的数字
+ * 解法一:
+ *    1：使用环形链表来进行计算,时间复杂度为0(n)
+ *    2:
+ *
  */
 public class Problem45 {
     public static int lastRemaining(int n, int m) {
         if (n < 1 || m < 1)
             return -1;
+
         ListNode head = new ListNode(0);
         ListNode cur = head;
         for (int i = 1; i < n; i++) {
