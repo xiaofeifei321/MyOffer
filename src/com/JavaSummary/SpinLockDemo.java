@@ -34,6 +34,7 @@ public class SpinLockDemo {
             spinLockDemo.myLock();
             try {
                 TimeUnit.SECONDS.sleep(5);
+                spinLockDemo.myUnLock();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -49,6 +50,7 @@ public class SpinLockDemo {
             spinLockDemo.myLock();
             try {
                 TimeUnit.SECONDS.sleep(5);
+                spinLockDemo.myUnLock();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
