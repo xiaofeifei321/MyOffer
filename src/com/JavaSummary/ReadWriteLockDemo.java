@@ -1,31 +1,35 @@
 package com.JavaSummary;/*
-* å¤šä¸ªçº¿ç¨‹åŒæ—¶è¯»ä¸€ä¸ªèµ„æºç±»æ²¡æœ‰é—®é¢˜ï¼Œæ‰€ä»¥ä¸ºäº†æ»¡è¶³å¹¶å‘é‡ï¼Œè¯»å–å…±äº«èµ„æºåº”è¯¥å¯ä»¥åŒæ—¶è¿›è¡Œã€‚ä½†æ˜¯å†™å…±äº«
-* èµ„æºåªèƒ½æœ‰ä¸€ä¸ªçº¿ç¨‹ã€‚
+* ¶à¸öÏß³ÌÍ¬Ê±¶ÁÒ»¸ö×ÊÔ´ÀàÃ»ÓĞÎÊÌâ£¬ËùÒÔÎªÁËÂú×ã²¢·¢Á¿£¬¶ÁÈ¡¹²Ïí×ÊÔ´Ó¦¸Ã¿ÉÒÔÍ¬Ê±½øĞĞ¡£µ«ÊÇĞ´¹²Ïí
+* ×ÊÔ´Ö»ÄÜÓĞÒ»¸öÏß³Ì¡£
 *
-* å†™æ“ä½œï¼šåŸå­+ç‹¬å ï¼Œæ•´ä¸ªè¿‡ç¨‹å¿…é¡»æ˜¯ä¸€ä¸ªå®Œæ•´çš„ç»Ÿä¸€ä½“ï¼Œä¸­é—´ä¸è®¸è¢«åˆ†å‰²ï¼Œè¢«æ‰“æ–­ã€‚
+*  Ğ¡×Ü½á:
+     1: ¶Á-¶ÁÄÜ¹²´æ
+     2£º¶Á-Ğ´²»ÄÜ¹²´æ
+     3£ºĞ´-Ğ´²»ÄÜ¹²´æ
+* Ğ´²Ù×÷£ºÔ­×Ó+¶ÀÕ¼£¬Õû¸ö¹ı³Ì±ØĞëÊÇÒ»¸öÍêÕûµÄÍ³Ò»Ìå£¬ÖĞ¼ä²»Ğí±»·Ö¸î£¬±»´ò¶Ï¡£
 * */
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 class MyCache{
     private volatile Map<String,Object> map = new HashMap<>();
 //    private Lock lock = new ReentrantLock();
     private ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
-    public void put(String key,Object value){
 
+
+
+    public void put(String key,Object value){
         reentrantReadWriteLock.writeLock().lock();
         try{
-            System.out.println(Thread.currentThread().getName()+"\t æ­£åœ¨å†™å…¥ï¼š"+key);
+            System.out.println(Thread.currentThread().getName()+"\t xieÕıÔÚĞ´Èë£º"+key);
             try{
                 TimeUnit.MILLISECONDS.sleep(300);
             } catch (InterruptedException e) {e.printStackTrace();}
             map.put(key,value);
-            System.out.println(Thread.currentThread().getName()+"\t å†™å…¥å®Œæˆ");
+            System.out.println(Thread.currentThread().getName()+"\t xieĞ´ÈëÍê³É");
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -37,18 +41,17 @@ class MyCache{
     public void get(String key){
         reentrantReadWriteLock.readLock().lock();
         try {
-            System.out.println(Thread.currentThread().getName()+"\t æ­£åœ¨è¯»å–ï¼š"+key);
+            System.out.println(Thread.currentThread().getName()+"\t duÕıÔÚ¶ÁÈ¡£º"+key);
             try{
                 TimeUnit.MILLISECONDS.sleep(300);
             } catch (InterruptedException e) {e.printStackTrace();}
             Object result = map.get(key);
-            System.out.println(Thread.currentThread().getName()+"\t è¯»å–å®Œæˆ"+result);
+            System.out.println(Thread.currentThread().getName()+"\t du¶ÁÈ¡Íê³É"+result);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
             reentrantReadWriteLock.readLock().unlock();
         }
-
     }
 
 }
