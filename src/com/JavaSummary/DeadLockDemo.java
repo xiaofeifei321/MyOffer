@@ -1,46 +1,50 @@
 package com.JavaSummary;/*
-* æ­»é”æ˜¯æŒ‡ä¸¤ä¸ªæˆ–è€…ä¸¤ä¸ªä»¥ä¸Šçš„è¿›ç¨‹åœ¨æ‰§è¡Œè¿‡ç¨‹ä¸­ï¼Œå› æŠ¢å¤ºèµ„æºè€Œé€ æˆçš„ä¸€ç§äº’ç›¸ç­‰å¾…çš„ç°è±¡ï¼Œ
-* è‹¥æ— å¤–åŠ›å¹²æ¶‰å®ƒä»¬å°†éƒ½æ— æ³•æ¨è¿›ä¸‹å»ï¼Œå¦‚æœç³»ç»Ÿèµ„æºå……è¶³ï¼Œè¿›ç¨‹çš„èµ„æºè¯·æ±‚éƒ½èƒ½å¤Ÿå¾—åˆ°æ»¡è¶³ï¼Œ
-* æ­»é”å‡ºç°çš„å¯èƒ½æ€§ä¹Ÿå°±å¾ˆä½ï¼Œå¦åˆ™å°±ä¼šå› äº‰å¤ºæœ‰é™çš„èµ„æºè€Œé™·å…¥æ­»é”ã€‚
-* */
+ * ËÀËøÊÇÖ¸Á½¸ö»òÕßÁ½¸öÒÔÉÏµÄ½ø³ÌÔÚÖ´ĞĞ¹ı³ÌÖĞ£¬ÒòÇÀ¶á×ÊÔ´¶øÔì³ÉµÄÒ»ÖÖ»¥ÏàµÈ´ıµÄÏÖÏó£¬
+ * ÈôÎŞÍâÁ¦¸ÉÉæËüÃÇ½«¶¼ÎŞ·¨ÍÆ½øÏÂÈ¥£¬Èç¹ûÏµÍ³×ÊÔ´³ä×ã£¬½ø³ÌµÄ×ÊÔ´ÇëÇó¶¼ÄÜ¹»µÃµ½Âú×ã£¬
+ * ËÀËø³öÏÖµÄ¿ÉÄÜĞÔÒ²¾ÍºÜµÍ£¬·ñÔò¾Í»áÒòÕù¶áÓĞÏŞµÄ×ÊÔ´¶øÏİÈëËÀËø¡£
+ * */
 
 import java.util.concurrent.TimeUnit;
 
-class HoldLockThread implements Runnable{
+class HoldLockThread implements Runnable {
     private String lockA;
     private String lockB;
 
-    public HoldLockThread(String lockA,String lockB){
+    public HoldLockThread(String lockA, String lockB) {
         this.lockA = lockA;
         this.lockB = lockB;
     }
 
-    public void run(){
-        synchronized (lockA){
-            System.out.println(Thread.currentThread().getName()+"\tè‡ªå·±æŒæœ‰ï¼š"+lockA+"\tå°è¯•è·å¾—ï¼š"+lockB);
-            //æš‚åœä¸€ä¸‹
-            try{ TimeUnit.SECONDS.sleep(2); }catch (InterruptedException e){e.printStackTrace();}
+    public void run() {
+        synchronized (lockA) {
+            System.out.println(Thread.currentThread().getName() + "\t×Ô¼º³ÖÓĞ£º" + lockA + "\t³¢ÊÔ»ñµÃ£º" + lockB);
+            //ÔİÍ£Ò»ÏÂ
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
-            synchronized (lockB){
-                System.out.println(Thread.currentThread().getName()+"\tè‡ªå·±æŒæœ‰ï¼š"+lockB+"\tå°è¯•è·å¾—ï¼š"+lockA);
+            synchronized (lockB) {
+                System.out.println(Thread.currentThread().getName() + "\t×Ô¼º³ÖÓĞ£º" + lockB + "\t³¢ÊÔ»ñµÃ£º" + lockA);
             }
         }
     }
 }
 
 public class DeadLockDemo {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String lockA = "lockA";
         String lockB = "lockB";
 
-        new Thread(new HoldLockThread(lockA,lockB),"ThreadAAA").start();
-        new Thread(new HoldLockThread(lockB,lockA),"ThreadBBB").start();
+        new Thread(new HoldLockThread(lockA, lockB), "ThreadAAA").start();
+        new Thread(new HoldLockThread(lockB, lockA), "ThreadBBB").start();
 
         /*
-        * linux  ps -ef|grep xxxx    ls -læŸ¥çœ‹å½“å‰è¿›ç¨‹çš„å‘½ä»¤
-        * windowsä¸‹çš„javaè¿è¡Œç¨‹åºï¼Œä¹Ÿæœ‰ç±»ä¼¼psçš„æŸ¥çœ‹è¿›ç¨‹çš„å‘½ä»¤ï¼Œä½†æ˜¯ç›®å‰æˆ‘ä»¬éœ€è¦æŸ¥çœ‹çš„åªæ˜¯java
-        *           jps = java ps      jps -l
-        *           jstack
-        * */
+         * linux  ps -ef|grep xxxx    ls -l²é¿´µ±Ç°½ø³ÌµÄÃüÁî
+         * windowsÏÂµÄjavaÔËĞĞ³ÌĞò£¬Ò²ÓĞÀàËÆpsµÄ²é¿´½ø³ÌµÄÃüÁî£¬µ«ÊÇÄ¿Ç°ÎÒÃÇĞèÒª²é¿´µÄÖ»ÊÇjava
+         *           jps = java ps      jps -l
+         *           jstack
+         * */
     }
 }

@@ -1,10 +1,13 @@
 package com.JavaSummary;
 
+import javax.management.remote.rmi._RMIConnection_Stub;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
+
 class MyData{
-    volatile int number = 0;
+     int number = 0;
     public void addTo60(){
         this.number = 60;
     }
@@ -18,23 +21,50 @@ class MyData{
     }
 }
 /*
-1 éªŒè¯volatileçš„å¯è§æ€§
-    1.1 åŠ å…¥int number=0ï¼Œnumberå˜é‡ä¹‹å‰æ ¹æœ¬æ²¡æœ‰æ·»åŠ volatileå…³é”®å­—ä¿®é¥°,æ²¡æœ‰å¯è§æ€§
-    1.2 æ·»åŠ äº†volatileï¼Œå¯ä»¥è§£å†³å¯è§æ€§é—®é¢˜
-2 éªŒè¯volatileä¸ä¿è¯åŽŸå­æ€§
+1 ÑéÖ¤volatileµÄ¿É¼ûÐÔ
+    1.1 ¼ÓÈëint number=0£¬number±äÁ¿Ö®Ç°¸ù±¾Ã»ÓÐÌí¼Óvolatile¹Ø¼ü×ÖÐÞÊÎ,Ã»ÓÐ¿É¼ûÐÔ
+    1.2 Ìí¼ÓÁËvolatile£¬¿ÉÒÔ½â¾ö¿É¼ûÐÔÎÊÌâ
+2 ÑéÖ¤volatile²»±£Ö¤Ô­×ÓÐÔ
 
-    2.1 åŽŸå­æ€§æ˜¯ä¸å¯åˆ†å‰²ï¼Œå®Œæ•´æ€§ï¼Œä¹Ÿå³æŸä¸ªçº¿ç¨‹æ­£åœ¨åšæŸä¸ªå…·ä½“ä¸šåŠ¡æ—¶ï¼Œä¸­é—´ä¸å¯ä»¥è¢«åŠ å¡žæˆ–è€…åˆ†å‰²ã€‚
-    éœ€è¦æ•´ä½“å®Œæˆï¼Œè¦ä¹ˆåŒæ—¶æˆåŠŸï¼Œè¦ä¹ˆåŒæ—¶å¤±è´¥ã€‚
+    2.1 Ô­×ÓÐÔÊÇ²»¿É·Ö¸î£¬ÍêÕûÐÔ£¬Ò²¼´Ä³¸öÏß³ÌÕýÔÚ×öÄ³¸ö¾ßÌåÒµÎñÊ±£¬ÖÐ¼ä²»¿ÉÒÔ±»¼ÓÈû»òÕß·Ö¸î¡£
+    ÐèÒªÕûÌåÍê³É£¬ÒªÃ´Í¬Ê±³É¹¦£¬ÒªÃ´Í¬Ê±Ê§°Ü¡£
 
-    2.2 volatileä¸å¯ä»¥ä¿è¯åŽŸå­æ€§æ¼”ç¤º
+    2.2 volatile²»¿ÉÒÔ±£Ö¤Ô­×ÓÐÔÑÝÊ¾
 
-    2.3 å¦‚ä½•è§£å†³åŽŸå­æ€§
-        *åŠ sync
-        *ä½¿ç”¨æˆ‘ä»¬çš„JUCä¸‹AtomicInteger
+    2.3 ÈçºÎ½â¾öÔ­×ÓÐÔ
+        *¼Ósync
+        *Ê¹ÓÃÎÒÃÇµÄJUCÏÂAtomicInteger
 
 * */
+
+class MyData1{
+  volatile   int number=0;
+    public  void addTo60(){
+        this.number=60;
+    }
+}
 public class VolatileDemo {
     public static void main(String[] args){
+        MyData1 myData1=new MyData1();
+        new Thread(()->{
+            try {
+                System.out.println(Thread.currentThread().getName()+"\t ½øÀ´ÁË");
+                TimeUnit.SECONDS.sleep(3);
+                myData1.addTo60();
+                System.out.println(Thread.currentThread().getName()+"\t updata number value="+myData1.number);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+            }
+        },"AA").start();
+        //Ö÷Ïß³ÌµÈ´ý
+        while (myData1.number==0){
+
+        }
+        System.out.println(Thread.currentThread().getName()+"\t ½áÊø");
+        System.out.println("-----------------------------------------·Ö¸îÏß-----------------------------------------------------------------------------------");
+
+
         MyData myData = new MyData();
         for (int i = 1; i <= 20 ; i++) {
             new Thread(()->{
@@ -45,7 +75,7 @@ public class VolatileDemo {
             },String.valueOf(i)).start();
         }
 
-        //éœ€è¦ç­‰å¾…ä¸Šè¿°20ä¸ªçº¿ç¨‹éƒ½è®¡ç®—å®ŒæˆåŽï¼Œå†ç”¨mainçº¿ç¨‹åŽ»çš„æœ€ç»ˆçš„ç»“æžœæ˜¯å¤šå°‘ï¼Ÿ
+        //ÐèÒªµÈ´ýÉÏÊö20¸öÏß³Ì¶¼¼ÆËãÍê³Éºó£¬ÔÙÓÃmainÏß³ÌÈ¥µÄ×îÖÕµÄ½á¹ûÊÇ¶àÉÙ£¿
 //        try{TimeUnit.SECONDS.sleep(5);} catch (InterruptedException e) {e.printStackTrace();}
         while(Thread.activeCount() > 2){
             Thread.yield();

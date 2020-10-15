@@ -1,22 +1,28 @@
 package com.JavaSummary;
 
 /*
-* åœ¨javaä¸­å¯ä½œä¸ºGC Rootsçš„å¯¹è±¡æœ‰ï¼š
-* 1.è™šæ‹Ÿæœºæ ˆï¼ˆæ ˆå¸§ä¸­çš„å±€éƒ¨å˜é‡åŒºï¼Œä¹Ÿå«åšå±€éƒ¨å˜é‡è¡¨ï¼‰ä¸­å¼•ç”¨çš„å¯¹è±¡ã€‚
-* 2.æ–¹æ³•åŒºä¸­çš„ç±»é™æ€å±æ€§å¼•ç”¨çš„å¯¹è±¡ã€‚
-* 3.æ–¹æ³•åŒºä¸­å¸¸é‡å¼•ç”¨çš„å¯¹è±¡
-* 4.æœ¬åœ°æ–¹æ³•æ ˆä¸­JNIï¼ˆNativeæ–¹æ³•ï¼‰å¼•ç”¨çš„å¯¹è±¡ã€‚
-* */
+ * ÔÚjavaÖĞ¿É×÷ÎªGC RootsµÄ¶ÔÏóÓĞ£º
+ * 1.ĞéÄâ»úÕ»£¨Õ»Ö¡ÖĞµÄ¾Ö²¿±äÁ¿Çø£¬Ò²½Ğ×ö¾Ö²¿±äÁ¿±í£©ÖĞÒıÓÃµÄ¶ÔÏó¡£
+ * 2.·½·¨ÇøÖĞµÄÀà¾²Ì¬ÊôĞÔÒıÓÃµÄ¶ÔÏó¡£
+ * 3.·½·¨ÇøÖĞ³£Á¿ÒıÓÃµÄ¶ÔÏó
+ * 4.±¾µØ·½·¨Õ»ÖĞJNI£¨Native·½·¨£©ÒıÓÃµÄ¶ÔÏó¡£
+ * */
 public class GCRootDemo {
-    private byte[] byteArray = new byte[100*1024*1024];
+    private byte[] byteArray = new byte[100 * 1024 * 1024];
 
-    public static void m1(){
+    private static GCRootDemo t2; //·½·¨ÇøÖĞµÄÀà¾²Ì¬ÊôĞÔÒıÓÃµÄ¶ÔÏó¡£
+    private static final GCRootDemo t3 = new GCRootDemo(); //·½·¨ÇøÖĞ³£Á¿ÒıÓÃµÄ¶ÔÏó
+
+    /**
+     * ·½·¨ÊÇÊÇÔÚÕ»ÀïÃæµÄ£¬Õ»ÀïÃæµÄ¾Ö²¿±äÁ¿
+     */
+    public static void m1() {
         GCRootDemo t1 = new GCRootDemo();
         System.gc();
-        System.out.println("ç¬¬ä¸€æ¬¡GCå®Œæˆ");
+        System.out.println("µÚÒ»´ÎGCÍê³É");
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         m1();
     }
 }
