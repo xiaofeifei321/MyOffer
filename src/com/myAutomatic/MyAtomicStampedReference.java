@@ -1,6 +1,7 @@
 package com.myAutomatic;
 
 import java.util.concurrent.atomic.AtomicStampedReference;
+import java.util.concurrent.atomic.LongAdder;
 
 public class MyAtomicStampedReference {
     public static void main(String[] args) {
@@ -25,6 +26,16 @@ public class MyAtomicStampedReference {
             System.out.println(Thread.currentThread().getName() + "[consume] compareAndSet " + re);
         });
         thread.start();
+        /**
+         *
+         */
+        System.out.println("----------------------------·Ö¸îÏß--------------------------------------------");
+        LongAdder longAdder=new LongAdder();
+        longAdder.increment();
+        System.out.println("22   "+longAdder);
+
+
+
     }
 }
 
