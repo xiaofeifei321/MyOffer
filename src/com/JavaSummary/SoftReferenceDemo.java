@@ -2,6 +2,9 @@ package com.JavaSummary;
 
 import java.lang.ref.SoftReference;
 
+/**
+ * 软引用
+ */
 public class SoftReferenceDemo {
     /*
     * 内存够用的时候就保留，不够用就回收
