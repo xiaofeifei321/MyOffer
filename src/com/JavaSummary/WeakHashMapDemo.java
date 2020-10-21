@@ -1,9 +1,12 @@
 package com.JavaSummary;
 
-import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.WeakHashMap;
 
+/**
+ * 虚引用
+ * 虚引用的主要作用是和跟踪对象被垃圾回收的状态，仅仅是提供一种确保对象被finalize以后，做某些事情的机制，一般是用于回收时候做相关操作
+ */
 public class WeakHashMapDemo {
     public static void main(String[] args){
         myHashMap();

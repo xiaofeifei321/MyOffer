@@ -2,6 +2,9 @@ package com.JavaSummary;
 
 import java.lang.ref.WeakReference;
 
+/**
+ * ÈõÒıÓÃ
+ */
 public class WeakReferenceDemo {
     public static void main(String[] args){
         Object o1 = new Object();
