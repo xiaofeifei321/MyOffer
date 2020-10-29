@@ -1,6 +1,5 @@
 package com.JavaSummary;
 
-import javax.management.remote.rmi._RMIConnection_Stub;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -45,26 +44,9 @@ class MyData1{
 }
 public class VolatileDemo {
     public static void main(String[] args){
-        MyData1 myData1=new MyData1();
-        new Thread(()->{
-            try {
-                System.out.println(Thread.currentThread().getName()+"\t 进来了");
-                TimeUnit.SECONDS.sleep(3);
-                myData1.addTo60();
-                System.out.println(Thread.currentThread().getName()+"\t updata number value="+myData1.number);
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-            }
-        },"AA").start();
-        //主线程等待
-        while (myData1.number==0){
-
-        }
-        System.out.println(Thread.currentThread().getName()+"\t 结束");
-        System.out.println("-----------------------------------------分割线-----------------------------------------------------------------------------------");
-
-
+        /**
+         * 例子验证volatile修饰的变量不保证原子性
+         */
         MyData myData = new MyData();
         for (int i = 1; i <= 20 ; i++) {
             new Thread(()->{
@@ -82,5 +64,34 @@ public class VolatileDemo {
         }
         System.out.println(Thread.currentThread().getName()+"\t finnally number value: "+myData.number);
         System.out.println(Thread.currentThread().getName()+"\t finnally number value: "+myData.atomicInteger);
+        System.out.println();
+        System.out.println("-----------------------------------------分割线-----------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println();
+
+        /**
+         * 例子验证volatile修饰的变量有可见性
+         */
+        MyData1 myData1=new MyData1();
+        new Thread(()->{
+            try {
+                System.out.println(Thread.currentThread().getName()+"\t 进来了");
+                TimeUnit.SECONDS.sleep(3);
+                myData1.addTo60();
+                System.out.println(Thread.currentThread().getName()+"\t updata number value="+myData1.number);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+            }
+        },"AA").start();
+        //主线程等待
+        while (myData1.number==0){
+
+        }
+        System.out.println(Thread.currentThread().getName()+"\t 结束");
+
     }
+
+
+
 }
