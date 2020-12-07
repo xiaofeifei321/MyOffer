@@ -23,6 +23,11 @@ public class GCRootDemo {
     }
 
     public static void main(String[] args) {
-        m1();
+//        m1();
+        for (int i = 0; i < 5; i++) {
+
+        }
+
+
     }
 }
