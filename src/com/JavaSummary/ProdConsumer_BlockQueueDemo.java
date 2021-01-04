@@ -6,10 +6,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class MyResource{
-    private volatile boolean FLAG = true;//é»˜è®¤å¼€å¯ï¼Œè¿›è¡Œç”Ÿäº§+æ¶ˆè´¹
+    private volatile boolean FLAG = true;//Ä¬ÈÏ¿ªÆô£¬½øĞĞÉú²ú+Ïû·Ñ£¬volatile¹Ø¼ü×Ö
+    //Ô­×ÓÀà²Ù×÷£¬±£Ö¤Ô­×ÓĞÔ
     private AtomicInteger atomicInteger = new AtomicInteger();
 
     BlockingQueue<String> blockingQueue = null;
+
     public MyResource(BlockingQueue<String> blockingQueue) {
         this.blockingQueue = blockingQueue;
         System.out.println(blockingQueue.getClass().getName());
@@ -18,31 +20,36 @@ class MyResource{
     public void myProd() throws Exception{
         String data = null;
         boolean retValue;
+        /**
+         * µ±FLAGÎªtrueµÄÊ±ºò£¬¿ªÊ¼Éú²ú
+         */
         while(FLAG){
             data = atomicInteger.incrementAndGet()+"";
+            //Á½ÃëÊ±¼ä´æ·ÅÒ»¸öÊı¾İ£¬offer·¨£º°ÑÔªËØ¼ÓÈëµ½×èÈû¶ÓÁĞÖĞ£¬Èç¹û¿ÉÒÔÈİÄÉ£¬Ôò·µ»Ø true¡£Èç¹û²»¿ÉÒÔÈİÄÉ£¬Ôò·µ»Ø false,²»¾ß±¸×èÈû¹¦ÄÜ
             retValue = blockingQueue.offer(data,2L, TimeUnit.SECONDS);
             if(retValue){
-                System.out.println(Thread.currentThread().getName()+"\tæ’å…¥é˜Ÿåˆ—"+data+"æˆåŠŸ");
+                System.out.println(Thread.currentThread().getName()+"\t²åÈë¶ÓÁĞ"+data+"³É¹¦");
             }else{
-                System.out.println(Thread.currentThread().getName()+"\tæ’å…¥é˜Ÿåˆ—"+data+"å¤±è´¥");
+                System.out.println(Thread.currentThread().getName()+"\t²åÈë¶ÓÁĞ"+data+"Ê§°Ü");
             }
             TimeUnit.SECONDS.sleep(1);
         }
-        System.out.println(Thread.currentThread().getName()+"\tç”Ÿäº§åœæ­¢");
+        System.out.println(Thread.currentThread().getName()+"\tÉú²úÍ£Ö¹");
     }
 
     public void myConsumer() throws Exception{
         String result = null;
         while(FLAG){
+            //poll()·½·¨£ºÈ¡³öÅÅÔÚ×èÈû¶ÓÁĞÊ×Î»µÄ¶ÔÏó£¬Èô×èÈû¶ÓÁĞÎª¿Õ£¬Ôò·µ»Ø null,Èç¹û²»Îª¿Õ£¬Ôò·µ»ØÈ¡³öÀ´µÄÄÇ¸öÔªËØ,²»¾ß±¸×èÈû¹¦ÄÜ
             result = blockingQueue.poll(2L,TimeUnit.SECONDS);
             if(null==result || result.equalsIgnoreCase("")){
                 FLAG = false;
-                System.out.println(Thread.currentThread().getName()+"\t è¶…è¿‡2ç§’ï¼Œæ¶ˆè´¹é€€å‡º");
+                System.out.println(Thread.currentThread().getName()+"\t ³¬¹ı2Ãë£¬Ïû·ÑÍË³ö");
                 System.out.println();
                 System.out.println();
                 return;
             }
-            System.out.println(Thread.currentThread().getName()+"\tæ¶ˆè´¹é˜Ÿåˆ—"+result+"æˆåŠŸ");
+            System.out.println(Thread.currentThread().getName()+"\tÏû·Ñ¶ÓÁĞ"+result+"³É¹¦");
         }
     }
 
@@ -52,7 +59,7 @@ class MyResource{
 }
 
 /*
-* volatile/CAS/atomicInteger/BlockQueue/çº¿ç¨‹äº¤äº’/åŸå­å¼•ç”¨
+* volatile/CAS/atomicInteger/BlockQueue/Ïß³Ì½»»¥/Ô­×ÓÒıÓÃ
 * */
 
 public class ProdConsumer_BlockQueueDemo {
@@ -60,7 +67,7 @@ public class ProdConsumer_BlockQueueDemo {
         MyResource myResource = new MyResource(new ArrayBlockingQueue<>(10));
 
         new Thread(()->{
-            System.out.println(Thread.currentThread().getName()+"\t ç”Ÿäº§çº¿ç¨‹å¯åŠ¨");
+            System.out.println(Thread.currentThread().getName()+"\t Éú²úÏß³ÌÆô¶¯");
             System.out.println();
             System.out.println();
             try{
@@ -71,7 +78,7 @@ public class ProdConsumer_BlockQueueDemo {
         },"Prod").start();
 
         new Thread(()->{
-            System.out.println(Thread.currentThread().getName()+"\t æ¶ˆè´¹çº¿ç¨‹å¯åŠ¨");
+            System.out.println(Thread.currentThread().getName()+"\t Ïû·ÑÏß³ÌÆô¶¯");
             try{
                 myResource.myConsumer();
             }catch (Exception e){
@@ -79,13 +86,13 @@ public class ProdConsumer_BlockQueueDemo {
             }
         },"Consumer").start();
 
-        try{TimeUnit.SECONDS.sleep(5);}catch (InterruptedException e){e.printStackTrace();}
+   /*     try{TimeUnit.SECONDS.sleep(5);}catch (InterruptedException e){e.printStackTrace();}
 
         System.out.println();
         System.out.println();
         System.out.println();
 
-        System.out.println("5ç§’é’Ÿåˆ°ï¼Œmainåœæ­¢");
-        myResource.stop();
+        System.out.println("5ÃëÖÓµ½£¬mainÍ£Ö¹");*/
+//        myResource.stop();
     }
 }

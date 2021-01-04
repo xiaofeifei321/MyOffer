@@ -1,7 +1,10 @@
 package com.JavaSummary;
 
+import com.sun.net.httpserver.HttpServer;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
 import java.util.concurrent.FutureTask;
 
 /*class MyThread implements Runnable{
@@ -13,11 +16,11 @@ import java.util.concurrent.FutureTask;
 class MyThread implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
-        System.out.println(".........come in callable");
+        System.out.println(Thread.currentThread().getName()+".........come in callable");
+        Thread.sleep(5000);
         return 1024;
     }
 }
-
 /*
  *
  * */
@@ -28,7 +31,6 @@ public class CallableDemo {
         t1.start();
         int r1 = 100;
         int r2 = futureTask.get();//要求获得Callable线程的计算结果，如果没有计算完成就要强求，会导致阻塞，知道计算完成，建议放在最后
-
-        System.out.println(".....result" + r1 + r2);
+        System.out.println(".....result  " + r1 + r2);
     }
 }

@@ -18,7 +18,6 @@ class Phone{
         System.out.println(Thread.currentThread().getId()+"\t invoked sendEmail()");
     }
 }
-
 public class RenenterLockDemo {
     public static void main(String[] args){
         Phone phone = new Phone();
@@ -29,7 +28,6 @@ public class RenenterLockDemo {
                 e.printStackTrace();
             }
         },"t1").start();
-
         new Thread(()->{
             try {
                 phone.sendSMS();

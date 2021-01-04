@@ -9,12 +9,12 @@ public class CountDownLatch {
 
         for(int i=1;i<=6;i++){
             new Thread(()->{
-                System.out.println(Thread.currentThread().getName()+"\t 上完自习，离开教室");
+                System.out.println(Thread.currentThread().getName()+"\t�߳�"+ Thread.currentThread().getId()+"�ɻ�");
                 countDownLatch.countDown();
             },String.valueOf(i)).start();
         }
 
         countDownLatch.await();
-        System.out.println(Thread.currentThread().getName()+"\t *****班长最后关门走人");
+        System.out.println(Thread.currentThread().getName()+"\t���߳�"+ Thread.currentThread().getId()+"�ɻ�");
     }
 }

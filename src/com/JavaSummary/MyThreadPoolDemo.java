@@ -26,14 +26,12 @@ public class MyThreadPoolDemo {
                     System.out.println(Thread.currentThread().getName()+"\t 给用户"+tempInt+"办理业务");
                 });
              }
-
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             threadPool1.shutdown();
         }
-
+      //阿里推荐自己创建线程池，不要JDK创建好的，创建线程的七大参数
         System.out.println("__________________分割线————————————————————————————————————————————————————————————————————————————————————————");
        ExecutorService threadPool = new ThreadPoolExecutor(2,
                 5,

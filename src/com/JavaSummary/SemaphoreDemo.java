@@ -8,16 +8,17 @@ import java.util.concurrent.TimeUnit;
 * */
 public class SemaphoreDemo {
     public static void main(String[] args){
-        Semaphore semaphore = new Semaphore(3);  //æ¨¡æ‹Ÿ3ä¸ªè½¦ä½
-        for(int i=1;i<=6;i++){  //æ¨¡æ‹Ÿ6éƒ¨è½¦
+
+        Semaphore semaphore = new Semaphore(3);  //Ä£Äâ3¸ö³µÎ»
+        for(int i=1;i<=6;i++){  //Ä£Äâ6²¿³µ
             new Thread(()->{
                 try{
                     semaphore.acquire();
-                    System.out.println(Thread.currentThread().getName()+"\tæŠ¢åˆ°è½¦ä½");
+                    System.out.println(Thread.currentThread().getName()+"\tÇÀµ½³µÎ»");
                     try{
                         TimeUnit.SECONDS.sleep(3);
                     } catch (InterruptedException e) {e.printStackTrace();}
-                    System.out.println(Thread.currentThread().getName()+"\tåœè½¦3ç§’åç¦»å¼€è½¦ä½");
+                    System.out.println(Thread.currentThread().getName()+"\tÍ£³µ3ÃëºóÀë¿ª³µÎ»");
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 } finally {

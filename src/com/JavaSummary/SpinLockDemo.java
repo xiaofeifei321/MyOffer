@@ -20,7 +20,6 @@ public class SpinLockDemo {
 
         }
     }
-
     public void myUnLock() {
         //获取当前进来的线程
         Thread thread = Thread.currentThread();
@@ -28,7 +27,6 @@ public class SpinLockDemo {
         atomicReference.compareAndSet(thread, null);
         System.out.println(Thread.currentThread().getName() + "\t invoked myUnLock()");
     }
-
     public static void main(String[] args) {
 //        原子引用线程
         SpinLockDemo spinLockDemo = new SpinLockDemo();

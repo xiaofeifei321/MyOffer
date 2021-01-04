@@ -12,16 +12,16 @@ package com.JavaSummary;/*
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 class MyCache{
     private volatile Map<String,Object> map = new HashMap<>();
-//    private Lock lock = new ReentrantLock();
+    private Lock lock = new ReentrantLock(true);
     private ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
-
-
-
     public void put(String key,Object value){
+//        lock.lock();
         reentrantReadWriteLock.writeLock().lock();
         try{
             System.out.println(Thread.currentThread().getName()+"\t xie正在写入："+key);
@@ -33,12 +33,14 @@ class MyCache{
         }catch (Exception e){
             e.printStackTrace();
         }finally {
+//            lock.unlock();
             reentrantReadWriteLock.writeLock().unlock();
         }
 
     }
 
     public void get(String key){
+//        lock.lock();
         reentrantReadWriteLock.readLock().lock();
         try {
             System.out.println(Thread.currentThread().getName()+"\t du正在读取："+key);
@@ -50,6 +52,7 @@ class MyCache{
         }catch (Exception e){
             e.printStackTrace();
         }finally {
+//            lock.unlock();
             reentrantReadWriteLock.readLock().unlock();
         }
     }

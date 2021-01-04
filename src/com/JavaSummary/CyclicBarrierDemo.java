@@ -8,12 +8,19 @@ import java.util.concurrent.CyclicBarrier;
 * */
 public class CyclicBarrierDemo {
     public static void main(String[] args){
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(7,()->{System.out.println("å¬å”¤ç¥é¾™");});
+        CyclicBarrier cyclicBarrier=new CyclicBarrier(7, new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("ÕÙ»½ÉñÁú");
+//                System.out.println("ÕÙ»½ÉñÁú");
+            }
+
+        });
 
         for(int i=1;i<=7;i++){
             final int tempInt = i;
             new Thread(()->{
-                System.out.println(Thread.currentThread().getName()+"\t æ”¶é›†åˆ°ç¬¬ï¼š"+tempInt+"é¾™ç ");
+                System.out.println(Thread.currentThread().getName()+"\t ÊÕ¼¯µ½µÚ£º"+tempInt+"ÁúÖé");
                 try{
                     cyclicBarrier.await();
                 } catch (InterruptedException e){
