@@ -1,6 +1,8 @@
 package com.JavaSummary;
 
+import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
+import java.util.Map;
 
 /**
  * ÈõÒıÓÃ
