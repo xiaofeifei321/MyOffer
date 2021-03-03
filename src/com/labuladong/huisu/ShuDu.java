@@ -1,0 +1,8 @@
+package com.labuladong.huisu;
+
+/**
+ * ½âÊý¶À:
+ *
+ */
+public class ShuDu {
+}
