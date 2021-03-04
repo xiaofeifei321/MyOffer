@@ -61,8 +61,8 @@ public class SubarraySum {
 
     public static void main(String[] args) {
         int[] s = {3,5,2,-2,4,1};
-        System.out.println(SubarraySum.subSum(s, 9));
-        System.out.println(SubarraySum.subArraySun(s, 5));
+        System.out.println(SubarraySum.subSum(s, 8));
+        System.out.println(SubarraySum.subArraySun(s, 8));
     }
 
 }
