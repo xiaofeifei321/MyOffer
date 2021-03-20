@@ -1,6 +1,8 @@
 package com.labuladong.shuzu;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * 有三种葡萄，每种分别有a, b, c颗，现在有三个人，第一个人只吃第一种和第二种葡萄，第二个人只吃第二种和第三种葡萄，
@@ -25,10 +27,12 @@ public class ChiPuDaoSolution {
     }
 
     public static void main(String[] args) {
-        ChiPuDaoSolution chiPuDaoSolution=new ChiPuDaoSolution();
-        System.out.println(chiPuDaoSolution.sulation(1,2,3));
-        System.out.println(chiPuDaoSolution.sulation(1,2,6));
-        System.out.println(chiPuDaoSolution.sulation(12,13,11));
+        ChiPuDaoSolution chiPuDaoSolution = new ChiPuDaoSolution();
+        System.out.println(chiPuDaoSolution.sulation(1, 2, 3));
+        System.out.println(chiPuDaoSolution.sulation(1, 2, 6));
+        System.out.println(chiPuDaoSolution.sulation(12, 13, 11));
+
+        System.out.println(10 / 5);
     }
 
 
