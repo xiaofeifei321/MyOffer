@@ -1,4 +1,4 @@
-package com.labuladong.huisu;
+package com.labuladong.huisu.DFS;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -43,6 +43,10 @@ public class ShuZhuZiJi {
             track.remove(track.size() - 1);
         }
     }
+
+
+
+
 
 
     public static void main(String[] args) {
