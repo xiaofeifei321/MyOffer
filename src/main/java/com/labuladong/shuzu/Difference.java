@@ -42,7 +42,13 @@ public class Difference {
         return res;
     }
 
-
+    /**
+     * 航班预订
+     *
+     * @param bookings
+     * @param n
+     * @return
+     */
     public int[] corpFilghtBooking(int[][] bookings, int n) {
         //nums 初始化全为0
         int[] nums = new int[n];
