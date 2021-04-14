@@ -1,17 +1,18 @@
 package com.labuladong.shuzu;
 
-import cn.hutool.json.JSONUtil;
+import cn.hutool.core.util.StrUtil;
 
 /**
  * 差分数组
  */
-public class Difference {
+public class ChaFenShuZhuDifference {
+
+    private int[] diff;
+
     /**
      * 构造差分数组
      */
-    private int[] diff;
-
-    public Difference(int[] nums) {
+    public ChaFenShuZhuDifference(int[] nums) {
         assert nums.length > 0;
         diff = new int[nums.length];
         //构造差分数组
@@ -22,7 +23,7 @@ public class Difference {
     }
 
     /**
-     * 给闭区间[i,j]增加val(可以是附属)
+     * 给闭区间[i,j]增加val(可以是负数)
      */
     public void increment(int i, int j, int val) {
         diff[i] = diff[i] + val;
@@ -53,7 +54,7 @@ public class Difference {
         //nums 初始化全为0
         int[] nums = new int[n];
         //构造差分解法
-        Difference df = new Difference(nums);
+        ChaFenShuZhuDifference df = new ChaFenShuZhuDifference(nums);
         for (int[] booking : bookings) {
             int i = booking[0] - 1;
             int j = booking[1] - 1;
