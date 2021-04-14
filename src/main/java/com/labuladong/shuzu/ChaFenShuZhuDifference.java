@@ -1,9 +1,9 @@
 package com.labuladong.shuzu;
 
-import cn.hutool.core.util.StrUtil;
-
 /**
- * 差分数组
+ * 前缀数组和差分数组
+ *   前缀数据：适用于频繁查询某一个区间的累加和
+ *   差分数组：差分数组主要适用于频繁对原始数组的某一个区间的元素进行增减
  */
 public class ChaFenShuZhuDifference {
 

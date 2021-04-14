@@ -9,7 +9,7 @@ import java.util.Map;
  * 输入:nums = [1,1,1], k = 2
  * 输出: 2 , [1,1] 与 [1,1] 为两种不同的情况
  */
-public class SubarraySum {
+public class QianZhuiShuZhu {
 
     /**
      * 时间复杂度为 n方
@@ -61,8 +61,8 @@ public class SubarraySum {
 
     public static void main(String[] args) {
         int[] s = {3,5,2,-2,4,1};
-        System.out.println(SubarraySum.subSum(s, 8));
-        System.out.println(SubarraySum.subArraySun(s, 8));
+        System.out.println(QianZhuiShuZhu.subSum(s, 8));
+        System.out.println(QianZhuiShuZhu.subArraySun(s, 8));
     }
 
 }
