@@ -42,6 +42,7 @@ public class QianZhuiShuZhu {
      */
 
     public static int subArraySun(int[] nums, int k) {
+        //记录前缀和出现的次数
         Map<Integer, Integer> preSumFreq = new HashMap();
         preSumFreq.put(0, 1);
         int sum = 0;
