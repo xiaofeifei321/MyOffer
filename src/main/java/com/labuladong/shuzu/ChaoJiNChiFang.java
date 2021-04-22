@@ -35,9 +35,9 @@ public class ChaoJiNChiFang {
         a %= base;
         for (int i = 1; i <= b; i++) {
             //这里有乘法，潜在的溢出点
-            ans *= a;
+            ans =ans*a;
             //对乘法结果求模
-            ans %= base;
+            ans=ans%base;
         }
         return ans;
     }
