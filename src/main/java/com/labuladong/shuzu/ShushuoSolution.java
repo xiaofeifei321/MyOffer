@@ -27,7 +27,11 @@ public class ShushuoSolution {
         return true;
     }
 
-
+    /**
+     * 第二种方式
+     * @param n
+     * @return
+     */
     int countPrimesTwo(int n) {
         boolean[] isPrim = new boolean[n];
         // 将数组都初始化为 true
@@ -47,6 +51,9 @@ public class ShushuoSolution {
             if (isPrim[i]) count++;
         return count;
     }
+
+
+
 
     public static void main(String[] args) {
         ShushuoSolution shushuoSolution=new ShushuoSolution();
