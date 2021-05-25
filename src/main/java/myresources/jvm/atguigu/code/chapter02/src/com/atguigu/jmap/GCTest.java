@@ -1,6 +1,7 @@
 package myresources.jvm.atguigu.code.chapter02.src.com.atguigu.jmap;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * @author shkstart
@@ -15,9 +16,15 @@ public class GCTest {
             byte[] arr = new byte[1024 * 100];  // 100KB
             list.add(arr);
             try {
-                Thread.sleep(120);
-            } catch (InterruptedException e) {
+
+//                Scanner scanner = new Scanner(System.in);
+//                String info = scanner.next();
+//                System.out.println(System.getProperties());
+            } catch (Exception e) {
                 e.printStackTrace();
+            }
+            while (true){
+                new GCTest();
             }
         }
     }

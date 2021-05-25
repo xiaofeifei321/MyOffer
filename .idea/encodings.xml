@@ -12,6 +12,7 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/JavaSummary/ReadWriteLockDemo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/JavaSummary/SemaphoreDemo.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/JavaSummary/VolatileDemo.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/myresources/jvm/atguigu/code/chapter02/src/com/atguigu/jstack/AllStackTrace.java" charset="GBK" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>
