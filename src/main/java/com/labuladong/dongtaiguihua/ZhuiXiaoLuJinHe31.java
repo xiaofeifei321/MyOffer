@@ -1,4 +1,4 @@
-package com.labuladong;
+package com.labuladong.dongtaiguihua;
 
 import java.util.Arrays;
 
@@ -10,7 +10,7 @@ import java.util.Arrays;
  * 解释：因为路径 1→3→1→1→1 的总和最小
  * leedCode 64题
  */
-public class ZhuiXiaoLuJinHe {
+public class ZhuiXiaoLuJinHe31 {
     int[][] memo;
 
     public int minParhSum(int[][] grid) {
@@ -51,7 +51,7 @@ public class ZhuiXiaoLuJinHe {
 
 
     public static void main(String[] args) {
-        ZhuiXiaoLuJinHe zhuiXiaoLuJinHe = new ZhuiXiaoLuJinHe();
+        ZhuiXiaoLuJinHe31 zhuiXiaoLuJinHe = new ZhuiXiaoLuJinHe31();
         int[][] grid = new int[][]{
                 {1, 3, 1},
                 {1, 5, 1},
