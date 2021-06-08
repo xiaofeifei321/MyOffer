@@ -27,7 +27,7 @@ import java.util.Map;
  * 我们最多可以在屏幕上显示九个'A'通过如下顺序按键：
  * A, A, A, Ctrl A, Ctrl C, Ctrl V, Ctrl V
  */
-public class ShiJianPanWenTI {
+public class ShiJianPanWenTI36 {
     Map<int[], Integer> memo = new HashMap();
 
     public int maxA(int n) {
@@ -82,7 +82,7 @@ public class ShiJianPanWenTI {
 
 
     public static void main(String[] args) {
-        ShiJianPanWenTI shiJianPanWenTI = new ShiJianPanWenTI();
+        ShiJianPanWenTI36 shiJianPanWenTI = new ShiJianPanWenTI36();
         System.out.println(shiJianPanWenTI.maxA(7));
     }
 
