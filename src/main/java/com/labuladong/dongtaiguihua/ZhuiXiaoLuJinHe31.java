@@ -16,8 +16,8 @@ public class ZhuiXiaoLuJinHe31 {
     public int minParhSum(int[][] grid) {
         int m = grid.length;
         int n = grid[0].length;
+        System.out.println("m= "+m +"  n= "+n);
         //构造备忘录，初始值全部设置为-1
-        System.out.println("m= " + m + "n= " + n);
         memo = new int[m][n];
         for (int[] row : memo) {
             Arrays.fill(row, -1);
