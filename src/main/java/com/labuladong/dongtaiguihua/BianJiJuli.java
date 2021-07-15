@@ -37,13 +37,15 @@ public class BianJiJuli {
         // 计算所有 DP 值
         for (int i = 1; i < n + 1; i++) {
             for (int j = 1; j < m + 1; j++) {
-                //删除
+                //删除，直接把i中的字符串删掉了，前移i继续和j进行对比
                 int left = D[i - 1][j] + 1;
                 //插入，在s1[i]插入一个和s2[j]一样的字符.s2[j]被匹配，前移j，继续和i做对比
                 int down = D[i][j - 1] + 1;
                 //替换跳过
                 int left_down = D[i - 1][j - 1];
+                //判断是替换还是跳过
                 if (word1.charAt(i - 1) != word2.charAt(j - 1)) {
+                    //替换操作
                     left_down += 1;
                 }
                 D[i][j] = Math.min(left, Math.min(down, left_down));
