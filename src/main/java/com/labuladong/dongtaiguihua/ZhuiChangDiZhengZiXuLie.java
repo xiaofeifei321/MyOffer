@@ -1,6 +1,7 @@
 package com.labuladong.dongtaiguihua;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * 最长递增子序列(信封问题)
@@ -11,7 +12,7 @@ import java.util.Arrays;
  */
 public class ZhuiChangDiZhengZiXuLie {
     //dp[i]表示数组nums[i]这个数结尾的最长递增子序列的长度
-    public int lengthOfLIS(int[] nums) {
+    public static int lengthOfLIS(int[] nums) {
         int len = nums.length;
         if (len < 2) {
             return len;
@@ -35,10 +36,31 @@ public class ZhuiChangDiZhengZiXuLie {
         return res;
     }
 
+    /**
+     * 信封问题
+     *
+     * @param
+     */
+    public int maxEnvelopes(int[][] envelopes) {
+        int n = envelopes.length;
+        //安装宽度进行排序，如果宽度一样,安装高度进行降序排列
+        Arrays.sort(envelopes, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] == o2[0] ? o1[1] - o2[1] : o1[0] - o2[0];
+            }
+        });
+        //对高度数组寻找LIS
+        int[] height = new int[n];
+        for (int i = 0; i < n; i++) {
+            height[i] = envelopes[i][1];
+        }
+        return ZhuiChangDiZhengZiXuLie.lengthOfLIS(height);
+    }
     public static void main(String[] args) {
         int[] nums = {1, 4, 3, 4, 2, 3};
         ZhuiChangDiZhengZiXuLie zhuiChangDiZhengZiXuLie = new ZhuiChangDiZhengZiXuLie();
-        System.out.println(zhuiChangDiZhengZiXuLie.lengthOfLIS(nums));
+        System.out.println(ZhuiChangDiZhengZiXuLie.lengthOfLIS(nums));
     }
 
 }
